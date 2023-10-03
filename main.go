@@ -1,11 +1,11 @@
 package helpers
 
-func Reverse(str string) (string, error) {
-	reversed := ""
+func Map[T any, U any](input []T, fn func(T) U) []U {
+	result := make([]U, len(input))
 
-	for _, character := range str {
-		reversed = string(character) + reversed
+	for i, v := range input {
+		result[i] = fn(v)
 	}
 
-	return reversed, nil
+	return result
 }
